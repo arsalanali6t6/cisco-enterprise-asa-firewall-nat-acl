@@ -129,7 +129,7 @@ DNS: On
 A Record — Name: webserver.local | Type: A Record | Address: 5.5.5.3
 ```
 
-Full configuration and step-by-step explanation is in [IS Final Project Enterprise ASA Firewall Report ARSALAN ALI 70279).pdf](IS%20Final%20Project%20Enterprise%20ASA%20Firewall%20Report%20ARSALAN%20ALI%2070279%29.pdf).
+Full configuration and step-by-step explanation is in [IS Final Project Enterprise ASA Firewall Report ARSALAN ALI 70279).pdf](IS%20Final%20Project%20Enterprise%20ASA%20Firewall%20Report%20ARSALAN%20ALI%2070279%20.pdf).
 ---
 
 ## Testing & Results
