@@ -1,0 +1,1680 @@
+ASA FIREWALL 
+
+dosfsck(/dev/hda1) returned 0
+Processor memory 348127232, Reserved memory: 62914560
+
+Total SSMs found: 0
+
+Total NICs found: 10
+88E6095 rev 2 Gigabit Ethernet @ index 09 MAC: 0000.0003.0002
+88E6095 rev 2 Ethernet @ index 08 MAC: 0009.7CC2.5808
+88E6095 rev 2 Ethernet @ index 07 MAC: 0009.7CC2.5807
+88E6095 rev 2 Ethernet @ index 06 MAC: 0009.7CC2.5806
+88E6095 rev 2 Ethernet @ index 05 MAC: 0009.7CC2.5805
+88E6095 rev 2 Ethernet @ index 04 MAC: 0009.7CC2.5804
+88E6095 rev 2 Ethernet @ index 03 MAC: 0009.7CC2.5803
+88E6095 rev 2 Ethernet @ index 02 MAC: 0009.7CC2.5802
+88E6095 rev 2 Ethernet @ index 01 MAC: 0009.7CC2.5801
+y88acs06 rev16 Gigabit Ethernet @ index 00 MAC: 44d3.caef.1e22
+Encryption hardware device : Cisco ASA-5505 on-board accelerator (revision 0x0)
+                             Boot microcode        : CN1000-MC-BOOT-2.00
+                             SSL/IKE microcode     : CNLite-MC-SSLm-PLUS-2.03
+                             IPSec microcode       : CNlite-MC-IPSECm-MAIN-2.06
+Verify the activation-key, it might take a while...
+Running Permanent Activation Key: 0xG36KUJNL 0xDEBVTSSS 0xWRR5Q6T5 0x5FA0RCVI 0xIK1CM4TT
+
+Licensed features for this platform:
+Maximum Physical Interfaces       : 8              perpetual
+VLANs                             : 3              DMZ Restricted
+Dual ISPs                         : Disabled       perpetual
+VLAN Trunk Ports                  : 0              perpetual
+Inside Hosts                      : 10             perpetual
+Failover                          : Disabled       perpetual
+VPN-DES                           : Enabled        perpetual
+VPN-3DES-AES                      : Enabled        perpetual
+AnyConnect Premium Peers          : 2              perpetual
+AnyConnect Essentials             : Disabled       perpetual
+Other VPN Peers                   : 10             perpetual
+Total VPN Peers                   : 25             perpetual
+Shared License                    : Disabled       perpetual
+AnyConnect for Mobile             : Disabled       perpetual
+AnyConnect for Cisco VPN Phone    : Disabled       perpetual
+Advanced Endpoint Assessment      : Disabled       perpetual
+UC Phone Proxy Sessions           : 2              perpetual
+Total UC Proxy Sessions           : 2              perpetual
+Botnet Traffic Filter             : Disabled       perpetual
+Intercompany Media Engine         : Disabled       perpetual
+
+This platform has a Base license.
+
+
+Cisco Adaptive Security Appliance Software Version 8.4(2)
+
+  ****************************** Warning *******************************
+  This product contains cryptographic features and is
+  subject to United States and local country laws
+  governing, import, export, transfer, and use.
+  Delivery of Cisco cryptographic products does not
+  imply third-party authority to import, export,
+  distribute, or use encryption. Importers, exporters,
+  distributors and users are responsible for compliance
+  with U.S. and local country laws. By using this
+  product you agree to comply with applicable laws and
+  regulations. If you are unable to comply with U.S.
+  and local laws, return the enclosed items immediately.
+
+  A summary of U.S. laws governing Cisco cryptographic
+  products may be found at:
+  http://www.cisco.com/wwl/export/crypto/tool/stqrg.html
+
+  If you require further assistance please contact us by
+  sending email to export@cisco.com.
+  ******************************* Warning *******************************
+
+Copyright (c) 1996-2011 by Cisco Systems, Inc.
+
+               Restricted Rights Legend
+
+Use, duplication, or disclosure by the Government is
+subject to restrictions as set forth in subparagraph
+(c) of the Commercial Computer Software - Restricted
+Rights clause at FAR sec. 52.227-19 and subparagraph
+(c) (1) (ii) of the Rights in Technical Data and Computer
+Software clause at DFARS sec. 252.227-7013.
+
+               Cisco Systems, Inc.
+               170 West Tasman Drive
+               San Jose, California 95134-1706
+
+Reading from flash...
+!
+
+
+
+
+
+Type help or '?' for a list of available commands.
+
+ciscoasa>show run interface
+              ^
+% Invalid input detected at '^' marker.
+	
+ciscoasa>en
+Password: 
+ciscoasa#show run interface
+                  ^
+% Invalid input detected at '^' marker.
+	
+ciscoasa#
+ciscoasa#show running-config interface
+                             ^
+% Invalid input detected at '^' marker.
+	
+ciscoasa#
+ciscoasa#show running-config
+: Saved
+:
+ASA Version 8.4(2)
+!
+hostname ciscoasa
+names
+!
+interface Ethernet0/0
+ switchport access vlan 2
+!
+interface Ethernet0/1
+!
+interface Ethernet0/2
+!
+interface Ethernet0/3
+!
+interface Ethernet0/4
+!
+interface Ethernet0/5
+!
+interface Ethernet0/6
+!
+interface Ethernet0/7
+!
+interface Vlan1
+ nameif inside
+ security-level 100
+ ip address 192.168.1.1 255.255.255.0
+!
+interface Vlan2
+ nameif outside
+ security-level 0
+ ip address dhcp
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+telnet timeout 5
+ssh timeout 5
+!
+dhcpd address 192.168.1.5-192.168.1.35 inside
+dhcpd enable inside
+!
+dhcpd auto_config outside
+!
+!
+!
+!
+!
+ciscoasa#show interface vlan2
+                            ^
+% Invalid input detected at '^' marker.
+	
+ciscoasa#show ip address
+System IP Addresses:
+Interface             Name                 IP address      Subnet mask     Method
+Vlan1                 inside               192.168.1.1     255.255.255.0   manual
+Vlan2                 outside              unassigned      unassigned      DHCP
+
+Current IP Addresses:
+Interface             Name                 IP address      Subnet mask     Method
+Vlan1                 inside               192.168.1.1     255.255.255.0   manual
+Vlan2                 outside              unassigned      unassigned      DHCP
+
+ciscoasa#exit
+
+Logoff
+Type help or '?' for a list of available commands.
+
+ciscoasa>enable
+Password: 
+ciscoasa#config t
+ciscoasa(config)#interface vlan2
+ciscoasa(config-if)#no ip address dhcp
+WARNING: DHCPD bindings cleared on interface 'outside', address pool removed
+ciscoasa(config-if)#ip address 6.6.6.2 255.255.255.0
+ciscoasa(config-if)#no shutdown
+ciscoasa(config-if)#exit
+ciscoasa(config)#exit
+ciscoasa#show ip address
+System IP Addresses:
+Interface             Name                 IP address      Subnet mask     Method
+Vlan1                 inside               192.168.1.1     255.255.255.0   manual
+Vlan2                 outside              6.6.6.2         255.255.255.0   manual
+
+Current IP Addresses:
+Interface             Name                 IP address      Subnet mask     Method
+Vlan1                 inside               192.168.1.1     255.255.255.0   manual
+Vlan2                 outside              6.6.6.2         255.255.255.0   manual
+
+ciscoasa#
+
+
+Other VPN Peers                   : 10             perpetual
+Total VPN Peers                   : 25             perpetual
+Shared License                    : Disabled       perpetual
+AnyConnect for Mobile             : Disabled       perpetual
+AnyConnect for Cisco VPN Phone    : Disabled       perpetual
+Advanced Endpoint Assessment      : Disabled       perpetual
+UC Phone Proxy Sessions           : 2              perpetual
+Total UC Proxy Sessions           : 2              perpetual
+Botnet Traffic Filter             : Disabled       perpetual
+Intercompany Media Engine         : Disabled       perpetual
+
+This platform has a Base license.
+
+
+Cisco Adaptive Security Appliance Software Version 8.4(2)
+
+  ****************************** Warning *******************************
+  This product contains cryptographic features and is
+  subject to United States and local country laws
+  governing, import, export, transfer, and use.
+  Delivery of Cisco cryptographic products does not
+  imply third-party authority to import, export,
+  distribute, or use encryption. Importers, exporters,
+  distributors and users are responsible for compliance
+  with U.S. and local country laws. By using this
+  product you agree to comply with applicable laws and
+  regulations. If you are unable to comply with U.S.
+  and local laws, return the enclosed items immediately.
+
+  A summary of U.S. laws governing Cisco cryptographic
+  products may be found at:
+  http://www.cisco.com/wwl/export/crypto/tool/stqrg.html
+
+  If you require further assistance please contact us by
+  sending email to export@cisco.com.
+  ******************************* Warning *******************************
+
+Copyright (c) 1996-2011 by Cisco Systems, Inc.
+
+               Restricted Rights Legend
+
+Use, duplication, or disclosure by the Government is
+subject to restrictions as set forth in subparagraph
+(c) of the Commercial Computer Software - Restricted
+Rights clause at FAR sec. 52.227-19 and subparagraph
+(c) (1) (ii) of the Rights in Technical Data and Computer
+Software clause at DFARS sec. 252.227-7013.
+
+               Cisco Systems, Inc.
+               170 West Tasman Drive
+               San Jose, California 95134-1706
+
+Reading from flash...
+!
+
+
+
+
+
+Type help or '?' for a list of available commands.
+
+ciscoasa>show run interface
+              ^
+% Invalid input detected at '^' marker.
+	
+ciscoasa>en
+Password: 
+ciscoasa#show run interface
+                  ^
+% Invalid input detected at '^' marker.
+	
+ciscoasa#
+ciscoasa#show running-config interface
+                             ^
+% Invalid input detected at '^' marker.
+	
+ciscoasa#
+ciscoasa#show running-config
+: Saved
+:
+ASA Version 8.4(2)
+!
+hostname ciscoasa
+names
+!
+interface Ethernet0/0
+ switchport access vlan 2
+!
+interface Ethernet0/1
+!
+interface Ethernet0/2
+!
+interface Ethernet0/3
+!
+interface Ethernet0/4
+!
+interface Ethernet0/5
+!
+interface Ethernet0/6
+!
+interface Ethernet0/7
+!
+interface Vlan1
+ nameif inside
+ security-level 100
+ ip address 192.168.1.1 255.255.255.0
+!
+interface Vlan2
+ nameif outside
+ security-level 0
+ ip address dhcp
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+telnet timeout 5
+ssh timeout 5
+!
+dhcpd address 192.168.1.5-192.168.1.35 inside
+dhcpd enable inside
+!
+dhcpd auto_config outside
+!
+!
+!
+!
+!
+ciscoasa#show interface vlan2
+                            ^
+% Invalid input detected at '^' marker.
+	
+ciscoasa#show ip address
+System IP Addresses:
+Interface             Name                 IP address      Subnet mask     Method
+Vlan1                 inside               192.168.1.1     255.255.255.0   manual
+Vlan2                 outside              unassigned      unassigned      DHCP
+
+Current IP Addresses:
+Interface             Name                 IP address      Subnet mask     Method
+Vlan1                 inside               192.168.1.1     255.255.255.0   manual
+Vlan2                 outside              unassigned      unassigned      DHCP
+
+ciscoasa#exit
+
+Logoff
+Type help or '?' for a list of available commands.
+
+ciscoasa>enable
+Password: 
+ciscoasa#config t
+ciscoasa(config)#interface vlan2
+ciscoasa(config-if)#no ip address dhcp
+WARNING: DHCPD bindings cleared on interface 'outside', address pool removed
+ciscoasa(config-if)#ip address 6.6.6.2 255.255.255.0
+ciscoasa(config-if)#no shutdown
+ciscoasa(config-if)#exit
+ciscoasa(config)#exit
+ciscoasa#show ip address
+System IP Addresses:
+Interface             Name                 IP address      Subnet mask     Method
+Vlan1                 inside               192.168.1.1     255.255.255.0   manual
+Vlan2                 outside              6.6.6.2         255.255.255.0   manual
+
+Current IP Addresses:
+Interface             Name                 IP address      Subnet mask     Method
+Vlan1                 inside               192.168.1.1     255.255.255.0   manual
+Vlan2                 outside              6.6.6.2         255.255.255.0   manual
+
+ciscoasa#config t
+ciscoasa(config)#no dhcpd address 192.168.1.5-192.168.1.35
+% Incomplete command.
+ciscoasa(config)#no dhcpd address 192.168.1.5-192.168.1.35 inside
+ciscoasa(config)#dhcpd address 192.168.1.10-192.168.1.40 inside
+ciscoasa(config)#dhcpd dns 5.5.5.2
+% Incomplete command.
+ciscoasa(config)#dhcpd dns 5.5.5.2 interface inside
+ciscoasa(config)#show run dhcpd
+                  ^
+% Invalid input detected at '^' marker.
+	
+ciscoasa(config)#exit
+ciscoasa#show run dhcpd
+                  ^
+% Invalid input detected at '^' marker.
+	
+ciscoasa#exit
+
+Logoff
+Type help or '?' for a list of available commands.
+
+ciscoasa>en
+Password: 
+ciscoasa#
+ciscoasa#config t
+ciscoasa(config)#route outside 0.0.0.0 0.0.0.0 6.6.6.1
+ciscoasa(config)#exit
+ciscoasa#
+
+ciscoasa#show route
+Codes: C - connected, S - static, I - IGRP, R - RIP, M - mobile, B - BGP
+       D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area
+       N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2
+       E1 - OSPF external type 1, E2 - OSPF external type 2, E - EGP
+       i - IS-IS, L1 - IS-IS level-1, L2 - IS-IS level-2, ia - IS-IS inter area
+       * - candidate default, U - per-user static route, o - ODR
+       P - periodic downloaded static route
+
+Gateway of last resort is 6.6.6.1 to network 0.0.0.0
+
+     6.0.0.0/24 is subnetted, 2 subnets
+C       6.0.0.0 255.255.255.0 is directly connected, outside
+C       6.6.6.0 255.255.255.0 is directly connected, outside
+S*   0.0.0.0/0 [1/0] via 6.6.6.1
+ciscoasa#
+
+ciscoasa#show interface ip brief
+Interface              IP-Address      OK? Method Status                Protocol
+ 
+Ethernet0/0            unassigned      YES unset  up                    up
+ 
+Ethernet0/1            unassigned      YES unset  up                    up
+ 
+Ethernet0/2            unassigned      YES unset  down                  down
+ 
+Ethernet0/3            unassigned      YES unset  down                  down
+ 
+Ethernet0/4            unassigned      YES unset  down                  down
+ 
+Ethernet0/5            unassigned      YES unset  down                  down
+ 
+Ethernet0/6            unassigned      YES unset  down                  down
+ 
+Ethernet0/7            unassigned      YES unset  down                  down
+ 
+Vlan1                  192.168.1.1     YES manual up                    up
+ 
+Vlan2                  6.6.6.2         YES manual up                    up
+ciscoasa#config t
+ciscoasa(config)#interface vlan1
+ciscoasa(config-if)#no shutdown
+ciscoasa(config-if)#exit
+ciscoasa(config)#exit
+ciscoasa#show running-config
+: Saved
+:
+ASA Version 8.4(2)
+!
+hostname ciscoasa
+names
+!
+interface Ethernet0/0
+ switchport access vlan 2
+!
+interface Ethernet0/1
+!
+interface Ethernet0/2
+!
+interface Ethernet0/3
+!
+interface Ethernet0/4
+!
+interface Ethernet0/5
+!
+interface Ethernet0/6
+!
+interface Ethernet0/7
+!
+interface Vlan1
+ nameif inside
+ security-level 100
+ ip address 192.168.1.1 255.255.255.0
+!
+interface Vlan2
+ nameif outside
+ security-level 0
+ ip address 6.6.6.2 255.255.255.0
+!
+!
+route outside 0.0.0.0 0.0.0.0 6.6.6.1 1
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+telnet timeout 5
+ssh timeout 5
+!
+dhcpd address 192.168.1.10-192.168.1.39 inside
+dhcpd dns 5.5.5.2 interface inside
+dhcpd enable inside
+!
+dhcpd auto_config outside
+!
+!
+!
+!
+!
+
+
+ciscoasa#show interface ip brief
+Interface              IP-Address      OK? Method Status                Protocol
+ 
+Ethernet0/0            unassigned      YES unset  down                  down
+ 
+Ethernet0/1            unassigned      YES unset  up                    up
+ 
+Ethernet0/2            unassigned      YES unset  down                  down
+ 
+Ethernet0/3            unassigned      YES unset  down                  down
+ 
+Ethernet0/4            unassigned      YES unset  down                  down
+ 
+Ethernet0/5            unassigned      YES unset  down                  down
+ 
+Ethernet0/6            unassigned      YES unset  down                  down
+ 
+Ethernet0/7            unassigned      YES unset  down                  down
+ 
+Vlan1                  192.168.1.1     YES manual up                    up
+ 
+Vlan2                  6.6.6.2         YES manual up                    down
+ciscoasa#config t
+ciscoasa(config)#interface ethernet0/2
+ciscoasa(config-if)#switchport access vlan1
+                                          ^
+% Invalid input detected at '^' marker.
+	
+ciscoasa(config-if)# switchport access vlan 1
+ciscoasa(config-if)#no shut 
+ciscoasa(config-if)#exit
+ciscoasa(config)#
+
+ciscoasa(config-if)#exit
+ciscoasa(config)#
+%LINEPROTO-5-UPDOWN: Line protocol on Interface Ethernet0/1, changed state to down
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface Vlan1, changed state to down
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface Ethernet0/1, changed state to down
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface Vlan1, changed state to down
+
+ciscoasa(config)#exit
+ciscoasa#show interface ip brief
+Interface              IP-Address      OK? Method Status                Protocol
+ 
+Ethernet0/0            unassigned      YES unset  up                    up
+ 
+Ethernet0/1            unassigned      YES unset  up                    up
+ 
+Ethernet0/2            unassigned      YES unset  down                  down
+ 
+Ethernet0/3            unassigned      YES unset  down                  down
+ 
+Ethernet0/4            unassigned      YES unset  down                  down
+ 
+Ethernet0/5            unassigned      YES unset  down                  down
+ 
+Ethernet0/6            unassigned      YES unset  down                  down
+ 
+Ethernet0/7            unassigned      YES unset  down                  down
+ 
+Vlan1                  192.168.1.1     YES manual up                    up
+ 
+Vlan2                  6.6.6.2         YES manual up                    up
+ciscoasa#ping 192.168.1.1
+
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 192.168.1.1, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 1/26/53 ms
+
+ciscoasa#ping 6.6.6.1
+
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 6.6.6.1, timeout is 2 seconds:
+.!!!!
+Success rate is 80 percent (4/5), round-trip min/avg/max = 0/0/0 ms
+
+ciscoasa#
+
+ciscoasa>en
+Password: 
+Invalid password
+Password: 
+ciscoasa#config t
+ciscoasa(config)#object network INSIDE-NET
+ciscoasa(config-network-object)#subnet 192.168.1.0 255.255.255.0
+ciscoasa(config-network-object)#nat (inside,outside) dynamic interface
+ciscoasa(config-network-object)#exit
+ciscoasa#object network INTERNAL-WEBSERVER
+         ^
+% Invalid input detected at '^' marker.
+	
+ciscoasa#config t
+ciscoasa(config)#object network INTERNAL-WEBSERVER
+ciscoasa(config-network-object)#host 192.168.1.2
+ciscoasa(config-network-object)#nat (inside,outside) static 6.6.6.3
+ciscoasa(config-network-object)#exit
+ciscoasa#
+ciscoasa#config t
+ciscoasa(config)#policy-map global_policy
+ciscoasa(config-pmap)#class inspection_default
+ERROR: % class map inspection_default not configured
+ciscoasa(config-pmap)#inspect icmp
+                      ^
+% Invalid input detected at '^' marker.
+	
+ciscoasa(config-pmap)#exit
+
+ciscoasa#configure terminal
+ciscoasa(config)#class-map inspection_default
+ciscoasa(config-cmap)#match default-inspection-traffic
+ciscoasa(config-cmap)#exit
+ciscoasa(config)#policy-map global_policy
+ciscoasa(config-pmap)#class inspection_default
+ciscoasa(config-pmap-c)#inspect icmp
+ciscoasa(config-pmap-c)#inspect dns
+ciscoasa(config-pmap-c)#exit
+ciscoasa(config)#exit
+ciscoasa#ciscoasa#show service-policy
+               ^
+% Invalid input detected at '^' marker.
+	
+ciscoasa#config t
+ciscoasa(config)#show service-policy
+                  ^
+% Invalid input detected at '^' marker.
+	
+ciscoasa(config)#exit
+ciscoasa#show running-config policy-map
+                             ^
+% Invalid input detected at '^' marker.
+	
+ciscoasa#show running-config
+: Saved
+:
+ASA Version 8.4(2)
+!
+hostname ciscoasa
+names
+!
+interface Ethernet0/0
+ switchport access vlan 2
+!
+interface Ethernet0/1
+!
+interface Ethernet0/2
+!
+interface Ethernet0/3
+!
+interface Ethernet0/4
+!
+interface Ethernet0/5
+!
+interface Ethernet0/6
+!
+interface Ethernet0/7
+!
+interface Vlan1
+ nameif inside
+ security-level 100
+ ip address 192.168.1.1 255.255.255.0
+!
+interface Vlan2
+ nameif outside
+ security-level 0
+ ip address 6.6.6.2 255.255.255.0
+!
+object network INSIDE-NET
+ subnet 192.168.1.0 255.255.255.0
+object network INTERNAL-WEBSERVER
+ host 192.168.1.2
+!
+route outside 0.0.0.0 0.0.0.0 6.6.6.1 1
+!
+!
+!
+object network INSIDE-NET
+ nat (inside,outside) dynamic interface
+object network INTERNAL-WEBSERVER
+ nat (inside,outside) static 6.6.6.3
+!
+!
+!
+!
+class-map inspection_default
+ match default-inspection-traffic
+!
+policy-map global_policy
+ class inspection_default
+  inspect dns 
+  inspect icmp 
+!
+!
+telnet timeout 5
+ssh timeout 5
+!
+dhcpd address 192.168.1.10-192.168.1.39 inside
+dhcpd dns 5.5.5.2 interface inside
+dhcpd enable inside
+!
+dhcpd auto_config outside
+!
+!
+!
+!
+!
+
+ciscoasa#show access-list
+access-list cached ACL log flows: total 0, denied 0 (deny-flow-max 4096) alert-interval 300
+access-list OUTSIDE-IN; 1 elements; name hash: 0x446160d7
+access-list OUTSIDE-IN line 1 extended permit tcp any host 6.6.6.3 eq www(hitcnt=0) 0xd9511857
+ciscoasa#access-list OUTSIDE-IN line 1 extended permit 
+         ^
+% Invalid input detected at '^' marker.
+	
+ciscoasa#config t
+ciscoasa(config)#access-list OUTSIDE-IN line 1 extended permit 
+                                        ^
+% Invalid input detected at '^' marker.
+	
+ciscoasa(config)#access-list INSIDE-IN extended permit ip any any
+                                                        ^
+% Invalid input detected at '^' marker.
+	
+ciscoasa(config)#object network INSIDE-NET
+ciscoasa(config-network-object)#o nat (inside,outside) dynamic interface
+% Ambiguous command: "o nat ( inside , outside ) dynamic interface"
+ciscoasa(config)#exit
+ciscoasa#config t
+ciscoasa(config)#object network WEBSERVER
+ciscoasa(config-network-object)#host 192.168.1.2
+ciscoasa(config-network-object)#nat (inside,outside) dynamic interface
+ciscoasa(config-network-object)#exit
+ciscoasa#object network PC1-NAT
+         ^
+% Invalid input detected at '^' marker.
+	
+ciscoasa#config t
+ciscoasa(config)#object network PC1-NAT
+ciscoasa(config-network-object)#host 192.168.1.6
+ciscoasa(config-network-object)#nat (inside,outside) dynamic interface
+ciscoasa(config-network-object)#exit
+ciscoasa#config t
+ciscoasa(config)#object network PC2-NAT
+ciscoasa(config-network-object)# host 192.168.1.7
+ciscoasa(config-network-object)# nat (inside,outside) dynamic interface
+ciscoasa(config-network-object)#exit
+ciscoasa#
+
+
+ciscoasa(config)#
+ciscoasa(config)#
+ciscoasa(config)#ciscoasa#config t
+                  ^
+% Invalid input detected at '^' marker.
+	
+ciscoasa(config)#ciscoasa(config)#show run nat
+                  ^
+% Invalid input detected at '^' marker.
+	
+ciscoasa(config)#                  ^
+                                   ^
+% Invalid input detected at '^' marker.
+	
+ciscoasa(config)#% Invalid input detected at '^' marker.
+                 ^
+% Invalid input detected at '^' marker.
+	
+ciscoasa(config)#
+ciscoasa(config)#
+ciscoasa(config)#ciscoasa(config)#
+                  ^
+% Invalid input detected at '^' marker.
+	
+ciscoasa(config)#show nat
+Auto NAT Policies (Section 2)
+1 (inside) to (outside) source dynamic INSIDE-NET interface
+    translate_hits = 0, untranslate_hits = 0
+2 (inside) to (outside) source static INTERNAL-WEBSERVER 6.6.6.3
+    translate_hits = 0, untranslate_hits = 0
+3 (inside) to (outside) source dynamic PC1-NAT interface
+    translate_hits = 0, untranslate_hits = 0
+4 (inside) to (outside) source dynamic PC2-NAT interface
+    translate_hits = 0, untranslate_hits = 0
+5 (inside) to (outside) source dynamic WEBSERVER interface
+    translate_hits = 0, untranslate_hits = 0
+
+ciscoasa(config)#object network INSIDE-NET
+ciscoasa(config-network-object)#no nat (inside,outside) dynamic interface
+ciscoasa(config-network-object)#exit
+ciscoasa#config t
+ciscoasa(config)#no object network WEBSERVER
+ciscoasa(config)#show nat
+Auto NAT Policies (Section 2)
+
+2 (inside) to (outside) source static INTERNAL-WEBSERVER 6.6.6.3
+    translate_hits = 0, untranslate_hits = 0
+3 (inside) to (outside) source dynamic PC1-NAT interface
+    translate_hits = 0, untranslate_hits = 0
+4 (inside) to (outside) source dynamic PC2-NAT interface
+    translate_hits = 0, untranslate_hits = 0
+
+ciscoasa(config)#end
+ciscoasa#write memory
+Building configuration...
+Cryptochecksum: 5d0d7af0 2e99349f 610337cf 20366c32
+
+1429  bytes copied in 1.354 secs (1055 bytes/sec)
+[OK]
+ciscoasa#
+ciscoasa(config)#show nat
+Auto NAT Policies (Section 2)
+1 (inside) to (outside) source dynamic INSIDE-NET interface
+    translate_hits = 0, untranslate_hits = 0
+2 (inside) to (outside) source static INTERNAL-WEBSERVER 6.6.6.3
+    translate_hits = 0, untranslate_hits = 0
+3 (inside) to (outside) source dynamic PC1-NAT interface
+    translate_hits = 0, untranslate_hits = 0
+4 (inside) to (outside) source dynamic PC2-NAT interface
+    translate_hits = 0, untranslate_hits = 0
+5 (inside) to (outside) source dynamic WEBSERVER interface
+    translate_hits = 0, untranslate_hits = 0
+
+ciscoasa(config)#object network INSIDE-NET
+ciscoasa(config-network-object)#no nat (inside,outside) dynamic interface
+ciscoasa(config-network-object)#exit
+ciscoasa#config t
+ciscoasa(config)#no object network WEBSERVER
+ciscoasa(config)#show nat
+Auto NAT Policies (Section 2)
+
+2 (inside) to (outside) source static INTERNAL-WEBSERVER 6.6.6.3
+    translate_hits = 0, untranslate_hits = 0
+3 (inside) to (outside) source dynamic PC1-NAT interface
+    translate_hits = 0, untranslate_hits = 0
+4 (inside) to (outside) source dynamic PC2-NAT interface
+    translate_hits = 0, untranslate_hits = 0
+
+ciscoasa(config)#end
+ciscoasa#write memory
+Building configuration...
+Cryptochecksum: 5d0d7af0 2e99349f 610337cf 20366c32
+
+1429  bytes copied in 1.354 secs (1055 bytes/sec)
+[OK]
+ciscoasa#ping 6.6.6.1
+
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 6.6.6.1, timeout is 2 seconds:
+.....
+Success rate is 0 percent (0/5)
+
+ciscoasa#show interface ip brief
+Interface              IP-Address      OK? Method Status                Protocol
+ 
+Ethernet0/0            unassigned      YES unset  up                    up
+ 
+Ethernet0/1            unassigned      YES unset  up                    up
+ 
+Ethernet0/2            unassigned      YES unset  down                  down
+ 
+Ethernet0/3            unassigned      YES unset  down                  down
+ 
+Ethernet0/4            unassigned      YES unset  down                  down
+ 
+Ethernet0/5            unassigned      YES unset  down                  down
+ 
+Ethernet0/6            unassigned      YES unset  down                  down
+ 
+Ethernet0/7            unassigned      YES unset  down                  down
+ 
+Vlan1                  192.168.1.1     YES manual up                    up
+ 
+Vlan2                  6.6.6.2         YES manual up                    up
+ciscoasa#configure terminal
+ciscoasa(config)#
+ciscoasa(config)#access-list OUTSIDE-IN extended permit icmp
+% Incomplete command.
+ciscoasa(config)#access-list OUTSIDE-IN extended permit icmp any any
+ciscoasa(config)#show access-list OUTSIDE-IN
+                  ^
+% Invalid input detected at '^' marker.
+	
+ciscoasa(config)#end
+ciscoasa#write memory
+Building configuration...
+Cryptochecksum: 5d0d7af0 2e99349f 610337cf 20366c32
+
+1480  bytes copied in 1.319 secs (1122 bytes/sec)
+[OK]
+ciscoasa#show access-list OUTSIDE-IN
+                          ^
+% Invalid input detected at '^' marker.
+	
+ciscoasa#
+
+% Invalid input detected at '^' marker.
+	
+ciscoasa(config)#access-list INSIDE-IN extended deny tcp host 192.168.1.5 any
+ciscoasa(config)#access-list INSIDE-IN extended deny tcp host 192.168.1.5 any
+WARNING: <INSIDE-IN> found duplicate element
+ciscoasa(config)#access-list INSIDE-IN extended deny udp host 192.168.1.5 any
+ciscoasa(config)#access-list INSIDE-IN extended deny icmp host 192.168.1.5 any
+ciscoasa(config)#access-list INSIDE-IN extended permit tcp any any
+ciscoasa(config)#access-list INSIDE-IN extended permit udp any any
+ciscoasa(config)#access-list INSIDE-IN extended permit icmp any any
+ciscoasa(config)#access-group INSIDE-IN in interface inside
+ciscoasa(config)#end
+ciscoasa#write memory
+Building configuration...
+Cryptochecksum: 5d0d7af0 2e99349f 610337cf 20366c32
+
+1851  bytes copied in 2.1 secs (881 bytes/sec)
+[OK]
+ciscoasa#show access-list INSIDE-IN
+                          ^
+% Invalid input detected at '^' marker.
+	
+ciscoasa#config t
+ciscoasa(config)#show access-list INSIDE-IN
+                  ^
+% Invalid input detected at '^' marker.
+	
+ciscoasa(config)#
+ciscoasa#
+%SYS-5-CONFIG_I: Configured from console by console
+
+ciscoasa#show access-list
+access-list cached ACL log flows: total 0, denied 0 (deny-flow-max 4096) alert-interval 300
+access-list OUTSIDE-IN; 2 elements; name hash: 0xea2789e9
+access-list OUTSIDE-IN line 1 extended permit tcp any host 6.6.6.3 eq www(hitcnt=0) 0x7cacbb6e
+access-list OUTSIDE-IN line 2 extended permit icmp any any(hitcnt=25) 0x62ae6a94
+access-list INSIDE-IN; 6 elements; name hash: 0x7ba66272
+access-list INSIDE-IN line 1 extended deny tcp host 192.168.1.5 any(hitcnt=0) 0xc7c2d7cc
+access-list INSIDE-IN line 2 extended deny udp host 192.168.1.5 any(hitcnt=0) 0x6ed23abe
+access-list INSIDE-IN line 3 extended deny icmp host 192.168.1.5 any(hitcnt=0) 0x3eace887
+access-list INSIDE-IN line 4 extended permit tcp any any(hitcnt=0) 0x13c1b567
+access-list INSIDE-IN line 5 extended permit udp any any(hitcnt=0) 0xdc5c129b
+access-list INSIDE-IN line 6 extended permit icmp any any(hitcnt=0) 0xcce04cac
+ciscoasa#
+
+
+% Invalid input detected at '^' marker.
+	
+ciscoasa#
+ciscoasa#configure terminal
+ciscoasa(config)#policy-map global_policy
+ciscoasa(config-pmap)#class inspection_default
+ciscoasa(config-pmap-c)#inspect http
+ciscoasa(config-pmap-c)#exit
+ciscoasa(config)#exit
+ciscoasa#end
+          ^
+% Invalid input detected at '^' marker.
+	
+ciscoasa#write memory
+Building configuration...
+Cryptochecksum: 5d0d7af0 2e99349f 610337cf 20366c32
+
+1866  bytes copied in 2.06 secs (905 bytes/sec)
+[OK]
+ciscoasa#
+ciscoasa#
+
+ciscoasa#
+ciscoasa#show run all tcp-map
+                  ^
+% Invalid input detected at '^' marker.
+	
+ciscoasa#show run all tcp map
+                  ^
+% Invalid input detected at '^' marker.
+	
+ciscoasa#configure terminal
+ciscoasa(config)#policy-map global_policy
+ciscoasa(config-pmap)# class inspection_default
+ciscoasa(config-pmap-c)#no inspect http
+ciscoasa(config-pmap-c)#exit
+ciscoasa(config)#end
+ciscoasa#write memory
+Building configuration...
+Cryptochecksum: 5d0d7af0 2e99349f 610337cf 20366c32
+
+1851  bytes copied in 2.983 secs (620 bytes/sec)
+[OK]
+ciscoasa#
+% Invalid input detected at '^' marker.
+	
+ciscoasa#config t
+ciscoasa(config)#clear xlate
+                   ^
+% Invalid input detected at '^' marker.
+	
+ciscoasa(config)#reload
+Proceed with reload? [confirm]
+
+
+***
+*** --- START GRACEFUL SHUTDOWN ---
+Shutting down isakmp
+Shutting down webvpn
+Shutting down File system
+
+
+
+***
+*** --- SHUTDOWN NOW ---
+Process shutdown finished
+
+
+ciscoasa(config)#Rebooting.....
+
+
+
+
+CISCO SYSTEMS
+Embedded BIOS Version 1.0(12)13 08/28/08 15:50:37.45
+
+Low Memory: 632 KB
+High Memory: 507 MB
+PCI Device Table.
+Bus Dev Func VendID DevID Class              Irq
+ 00  01  00   1022   2080  Host Bridge
+ 00  01  02   1022   2082  Chipset En/Decrypt 11
+ 00  0C  00   1148   4320  Ethernet           11
+ 00  0D  00   177D   0003  Network En/Decrypt 10
+ 00  0F  00   1022   2090  ISA Bridge
+ 00  0F  02   1022   2092  IDE Controller
+ 00  0F  03   1022   2093  Audio              10
+ 00  0F  04   1022   2094  Serial Bus         9
+ 00  0F  05   1022   2095  Serial Bus         9
+
+Evaluating BIOS Options ...
+Launch BIOS Extension to setup ROMMON
+
+Cisco Systems ROMMON Version (1.0(12)13) #0: Thu Aug 28 15:55:27 PDT 2008
+
+Platform ASA5505
+
+Use BREAK or ESC to interrupt boot.
+Use SPACE to begin boot immediately.
+
+Boot in 9 seconds
+Boot in 8 seconds
+Boot in 7 seconds
+Boot in 6 seconds
+Boot in 5 seconds
+Boot in 4 seconds
+Boot in 3 seconds
+Boot in 2 seconds
+Boot in 1 second
+
+Launching BootLoader...
+Default configuration file contains 1 entry.
+
+Searching / for images to boot.
+
+Loading /asa842-k8.bin... Booting...
+Platform ASA5505
+
+
+Loading...
+IO memory blocks requested from bigphys 32bit: 9672
+dosfsck 2.11, 12 Mar 2005, FAT32, LFN
+Starting check/repair pass.
+Starting verification pass.
+/dev/hda1: 152 files, 35584/62780 clusters
+dosfsck(/dev/hda1) returned 0
+Processor memory 348127232, Reserved memory: 62914560
+
+Total SSMs found: 0
+
+Total NICs found: 10
+88E6095 rev 2 Gigabit Ethernet @ index 09 MAC: 0000.0003.0002
+88E6095 rev 2 Ethernet @ index 08 MAC: 0009.7CC2.5808
+88E6095 rev 2 Ethernet @ index 07 MAC: 0009.7CC2.5807
+88E6095 rev 2 Ethernet @ index 06 MAC: 0009.7CC2.5806
+88E6095 rev 2 Ethernet @ index 05 MAC: 0009.7CC2.5805
+88E6095 rev 2 Ethernet @ index 04 MAC: 0009.7CC2.5804
+88E6095 rev 2 Ethernet @ index 03 MAC: 0009.7CC2.5803
+88E6095 rev 2 Ethernet @ index 02 MAC: 0009.7CC2.5802
+88E6095 rev 2 Ethernet @ index 01 MAC: 0009.7CC2.5801
+y88acs06 rev16 Gigabit Ethernet @ index 00 MAC: 44d3.caef.1e22
+Encryption hardware device : Cisco ASA-5505 on-board accelerator (revision 0x0)
+                             Boot microcode        : CN1000-MC-BOOT-2.00
+                             SSL/IKE microcode     : CNLite-MC-SSLm-PLUS-2.03
+                             IPSec microcode       : CNlite-MC-IPSECm-MAIN-2.06
+Verify the activation-key, it might take a while...
+Running Permanent Activation Key: 0xD7I0C863 0xB41L4X6Z 0xSF920Z4H 0x955AAV78 0x3233K6AQ
+
+Licensed features for this platform:
+Maximum Physical Interfaces       : 8              perpetual
+VLANs                             : 3              DMZ Restricted
+Dual ISPs                         : Disabled       perpetual
+VLAN Trunk Ports                  : 0              perpetual
+Inside Hosts                      : 10             perpetual
+Failover                          : Disabled       perpetual
+VPN-DES                           : Enabled        perpetual
+VPN-3DES-AES                      : Enabled        perpetual
+AnyConnect Premium Peers          : 2              perpetual
+AnyConnect Essentials             : Disabled       perpetual
+Other VPN Peers                   : 10             perpetual
+Total VPN Peers                   : 25             perpetual
+Shared License                    : Disabled       perpetual
+AnyConnect for Mobile             : Disabled       perpetual
+AnyConnect for Cisco VPN Phone    : Disabled       perpetual
+Advanced Endpoint Assessment      : Disabled       perpetual
+UC Phone Proxy Sessions           : 2              perpetual
+Total UC Proxy Sessions           : 2              perpetual
+Botnet Traffic Filter             : Disabled       perpetual
+Intercompany Media Engine         : Disabled       perpetual
+
+This platform has a Base license.
+
+
+Cisco Adaptive Security Appliance Software Version 8.4(2)
+
+  ****************************** Warning *******************************
+  This product contains cryptographic features and is
+  subject to United States and local country laws
+  governing, import, export, transfer, and use.
+  Delivery of Cisco cryptographic products does not
+  imply third-party authority to import, export,
+  distribute, or use encryption. Importers, exporters,
+  distributors and users are responsible for compliance
+  with U.S. and local country laws. By using this
+  product you agree to comply with applicable laws and
+  regulations. If you are unable to comply with U.S.
+  and local laws, return the enclosed items immediately.
+
+  A summary of U.S. laws governing Cisco cryptographic
+  products may be found at:
+  http://www.cisco.com/wwl/export/crypto/tool/stqrg.html
+
+  If you require further assistance please contact us by
+  sending email to export@cisco.com.
+  ******************************* Warning *******************************
+
+Copyright (c) 1996-2011 by Cisco Systems, Inc.
+
+               Restricted Rights Legend
+
+Use, duplication, or disclosure by the Government is
+subject to restrictions as set forth in subparagraph
+(c) of the Commercial Computer Software - Restricted
+Rights clause at FAR sec. 52.227-19 and subparagraph
+(c) (1) (ii) of the Rights in Technical Data and Computer
+Software clause at DFARS sec. 252.227-7013.
+
+               Cisco Systems, Inc.
+               170 West Tasman Drive
+               San Jose, California 95134-1706
+
+Reading from flash...
+!
+
+
+
+
+
+Type help or '?' for a list of available commands.
+
+ciscoasa>show xlate
+              ^
+% Invalid input detected at '^' marker.
+	
+ciscoasa>en
+Password: 
+ciscoasa#show xlate
+1 in use, 1 most used
+Flags: D - DNS, e - extended, I - identity, i - dynamic, r - portmap, s - static, T - twice, N - net-to-net
+NAT from inside:192.168.1.2/32 to outside:6.6.6.3/32 flags s idle 00:00:26,  timeout 0:00:00
+
+ciscoasa#show access-list
+access-list cached ACL log flows: total 0, denied 0 (deny-flow-max 4096) alert-interval 300
+access-list OUTSIDE-IN; 2 elements; name hash: 0xa98ba398
+access-list OUTSIDE-IN line 1 extended permit tcp any host 6.6.6.3 eq www(hitcnt=0) 0x07d035a8
+access-list OUTSIDE-IN line 2 extended permit icmp any any(hitcnt=0) 0x3ea2bde7
+access-list INSIDE-IN; 6 elements; name hash: 0x538637cb
+access-list INSIDE-IN line 1 extended deny tcp host 192.168.1.5 any(hitcnt=0) 0x5a5d13b1
+access-list INSIDE-IN line 2 extended deny udp host 192.168.1.5 any(hitcnt=0) 0x2591234e
+access-list INSIDE-IN line 3 extended deny icmp host 192.168.1.5 any(hitcnt=0) 0xa9e0a66b
+access-list INSIDE-IN line 4 extended permit tcp any any(hitcnt=0) 0x076c37e7
+access-list INSIDE-IN line 5 extended permit udp any any(hitcnt=0) 0xb184d829
+access-list INSIDE-IN line 6 extended permit icmp any any(hitcnt=0) 0x807e7238
+
+
+
+
+
+
+
+
+
+NEW AGAIN 
+ype help or '?' for a list of available commands.
+
+ciscoasa>en
+Password: 
+ciscoasa#config t
+ciscoasa(config)#no access-group INSIDE-IN in interface inside
+ciscoasa(config)#object network PC1-NAT
+ciscoasa(config-network-object)# no nat (inside,outside) dynamic interface
+ciscoasa(config-network-object)#exit
+ciscoasa#config t
+ciscoasa(config)#object network PC2-NAT
+ciscoasa(config-network-object)#no nat (inside,outside) dynamic interface
+ciscoasa(config-network-object)#exit
+ciscoasa#config t
+ciscoasa(config)#object network INSIDE-PAT
+ciscoasa(config-network-object)#range 192.168.1.6 192.168.1.39
+                                ^
+% Invalid input detected at '^' marker.
+	
+ciscoasa(config-network-object)#object network INSIDE-PAT
+ciscoasa(config-network-object)# subnet 192.168.1.0 255.255.255.0
+ciscoasa(config-network-object)#nat (inside,outside) dynamic interface
+ciscoasa(config-network-object)#exit
+ciscoasa#access-group INSIDE-IN in interface inside
+         ^
+% Invalid input detected at '^' marker.
+	
+ciscoasa#
+ciscoasa#config t
+ciscoasa(config)#access-group INSIDE-IN in interface inside
+ciscoasa(config)#end
+ciscoasa#write memory
+Building configuration...
+Cryptochecksum: 5d0d7af0 2e99349f 610337cf 20366c32
+
+1851  bytes copied in 1.784 secs (1037 bytes/sec)
+[OK]
+ciscoasa#show nat
+Auto NAT Policies (Section 2)
+
+2 (inside) to (outside) source dynamic INSIDE-PAT interface
+    translate_hits = 0, untranslate_hits = 0
+3 (inside) to (outside) source static INTERNAL-WEBSERVER 6.6.6.3
+    translate_hits = 0, untranslate_hits = 0
+
+
+
+ciscoasa#show access list
+                     ^
+% Invalid input detected at '^' marker.
+	
+ciscoasa#show access-list
+access-list cached ACL log flows: total 0, denied 0 (deny-flow-max 4096) alert-interval 300
+access-list OUTSIDE-IN; 2 elements; name hash: 0xd4be569a
+access-list OUTSIDE-IN line 1 extended permit tcp any host 6.6.6.3 eq www(hitcnt=0) 0xb08061bc
+access-list OUTSIDE-IN line 2 extended permit icmp any any(hitcnt=0) 0x449d494a
+access-list INSIDE-IN; 6 elements; name hash: 0xc7424605
+access-list INSIDE-IN line 1 extended deny tcp host 192.168.1.5 any(hitcnt=0) 0x564d8990
+access-list INSIDE-IN line 2 extended deny udp host 192.168.1.5 any(hitcnt=0) 0x802b8d33
+access-list INSIDE-IN line 3 extended deny icmp host 192.168.1.5 any(hitcnt=0) 0x7e915547
+access-list INSIDE-IN line 4 extended permit tcp any any(hitcnt=0) 0xc5752551
+access-list INSIDE-IN line 5 extended permit udp any any(hitcnt=3) 0x6d133921
+access-list INSIDE-IN line 6 extended permit icmp any any(hitcnt=0) 0xc4661e85
+ciscoasa#
+Boot in 7 seconds
+Boot in 6 seconds
+Boot in 5 seconds
+Boot in 4 seconds
+Boot in 3 seconds
+Boot in 2 seconds
+Boot in 1 second
+
+Launching BootLoader...
+Default configuration file contains 1 entry.
+
+Searching / for images to boot.
+
+Loading /asa842-k8.bin... Booting...
+Platform ASA5505
+
+
+Loading...
+IO memory blocks requested from bigphys 32bit: 9672
+dosfsck 2.11, 12 Mar 2005, FAT32, LFN
+Starting check/repair pass.
+Starting verification pass.
+/dev/hda1: 152 files, 35584/62780 clusters
+dosfsck(/dev/hda1) returned 0
+Processor memory 348127232, Reserved memory: 62914560
+
+Total SSMs found: 0
+
+Total NICs found: 10
+88E6095 rev 2 Gigabit Ethernet @ index 09 MAC: 0000.0003.0002
+88E6095 rev 2 Ethernet @ index 08 MAC: 0009.7CC2.5808
+88E6095 rev 2 Ethernet @ index 07 MAC: 0009.7CC2.5807
+88E6095 rev 2 Ethernet @ index 06 MAC: 0009.7CC2.5806
+88E6095 rev 2 Ethernet @ index 05 MAC: 0009.7CC2.5805
+88E6095 rev 2 Ethernet @ index 04 MAC: 0009.7CC2.5804
+88E6095 rev 2 Ethernet @ index 03 MAC: 0009.7CC2.5803
+88E6095 rev 2 Ethernet @ index 02 MAC: 0009.7CC2.5802
+88E6095 rev 2 Ethernet @ index 01 MAC: 0009.7CC2.5801
+y88acs06 rev16 Gigabit Ethernet @ index 00 MAC: 44d3.caef.1e22
+Encryption hardware device : Cisco ASA-5505 on-board accelerator (revision 0x0)
+                             Boot microcode        : CN1000-MC-BOOT-2.00
+                             SSL/IKE microcode     : CNLite-MC-SSLm-PLUS-2.03
+                             IPSec microcode       : CNlite-MC-IPSECm-MAIN-2.06
+Verify the activation-key, it might take a while...
+Running Permanent Activation Key: 0xD7I0C863 0xB41L4X6Z 0xSF920Z4H 0x955AAV78 0x3233K6AQ
+
+Licensed features for this platform:
+Maximum Physical Interfaces       : 8              perpetual
+VLANs                             : 3              DMZ Restricted
+Dual ISPs                         : Disabled       perpetual
+VLAN Trunk Ports                  : 0              perpetual
+Inside Hosts                      : 10             perpetual
+Failover                          : Disabled       perpetual
+VPN-DES                           : Enabled        perpetual
+VPN-3DES-AES                      : Enabled        perpetual
+AnyConnect Premium Peers          : 2              perpetual
+AnyConnect Essentials             : Disabled       perpetual
+Other VPN Peers                   : 10             perpetual
+Total VPN Peers                   : 25             perpetual
+Shared License                    : Disabled       perpetual
+AnyConnect for Mobile             : Disabled       perpetual
+AnyConnect for Cisco VPN Phone    : Disabled       perpetual
+Advanced Endpoint Assessment      : Disabled       perpetual
+UC Phone Proxy Sessions           : 2              perpetual
+Total UC Proxy Sessions           : 2              perpetual
+Botnet Traffic Filter             : Disabled       perpetual
+Intercompany Media Engine         : Disabled       perpetual
+
+This platform has a Base license.
+
+
+Cisco Adaptive Security Appliance Software Version 8.4(2)
+
+  ****************************** Warning *******************************
+  This product contains cryptographic features and is
+  subject to United States and local country laws
+  governing, import, export, transfer, and use.
+  Delivery of Cisco cryptographic products does not
+  imply third-party authority to import, export,
+  distribute, or use encryption. Importers, exporters,
+  distributors and users are responsible for compliance
+  with U.S. and local country laws. By using this
+  product you agree to comply with applicable laws and
+  regulations. If you are unable to comply with U.S.
+  and local laws, return the enclosed items immediately.
+
+  A summary of U.S. laws governing Cisco cryptographic
+  products may be found at:
+  http://www.cisco.com/wwl/export/crypto/tool/stqrg.html
+
+  If you require further assistance please contact us by
+  sending email to export@cisco.com.
+  ******************************* Warning *******************************
+
+Copyright (c) 1996-2011 by Cisco Systems, Inc.
+
+               Restricted Rights Legend
+
+Use, duplication, or disclosure by the Government is
+subject to restrictions as set forth in subparagraph
+(c) of the Commercial Computer Software - Restricted
+Rights clause at FAR sec. 52.227-19 and subparagraph
+(c) (1) (ii) of the Rights in Technical Data and Computer
+Software clause at DFARS sec. 252.227-7013.
+
+               Cisco Systems, Inc.
+               170 West Tasman Drive
+               San Jose, California 95134-1706
+
+Reading from flash...
+!
+
+
+
+
+
+Type help or '?' for a list of available commands.
+
+ciscoasa>enable
+Password: 
+ciscoasa#show nat
+Auto NAT Policies (Section 2)
+
+2 (inside) to (outside) source dynamic INSIDE-PAT interface
+    translate_hits = 0, untranslate_hits = 0
+3 (inside) to (outside) source static INTERNAL-WEBSERVER 6.6.6.3
+    translate_hits = 0, untranslate_hits = 0
+
+
+
+ciscoasa#show access-list
+access-list cached ACL log flows: total 0, denied 0 (deny-flow-max 4096) alert-interval 300
+access-list OUTSIDE-IN; 2 elements; name hash: 0xdb076600
+access-list OUTSIDE-IN line 1 extended permit tcp any host 6.6.6.3 eq www(hitcnt=0) 0xed7a1ec7
+access-list OUTSIDE-IN line 2 extended permit icmp any any(hitcnt=0) 0x831673b9
+access-list INSIDE-IN; 6 elements; name hash: 0xb6e875b2
+access-list INSIDE-IN line 1 extended deny tcp host 192.168.1.5 any(hitcnt=0) 0x594ba529
+access-list INSIDE-IN line 2 extended deny udp host 192.168.1.5 any(hitcnt=0) 0xb0c81b89
+access-list INSIDE-IN line 3 extended deny icmp host 192.168.1.5 any(hitcnt=0) 0x0b12669b
+access-list INSIDE-IN line 4 extended permit tcp any any(hitcnt=0) 0x6388c051
+access-list INSIDE-IN line 5 extended permit udp any any(hitcnt=0) 0x244d1e02
+access-list INSIDE-IN line 6 extended permit icmp any any(hitcnt=0) 0x3d766ede
+ciscoasa#%DHCPD-4-PING_CONFLICT: DHCP address conflict:  server pinged 192.168.1.11.
+%DHCPD-4-PING_CONFLICT: DHCP address conflict:  server pinged 192.168.1.11.
+
+
+Logoff
+Type help or '?' for a list of available commands.
+
+
+Logoff
+Type help or '?' for a list of available commands.
+
+ciscoasa>en
+Password: 
+ciscoasa#show xlate
+7 in use, 7 most used
+Flags: D - DNS, e - extended, I - identity, i - dynamic, r - portmap, s - static, T - twice, N - net-to-net
+TCP-other PAT from inside:192.168.1.12/1027 to outside:6.6.6.2/1027 flags i idle 00:10:26,  timeout 0:00:30
+TCP-other PAT from inside:192.168.1.12/1028 to outside:6.6.6.2/1028 flags i idle 00:05:53,  timeout 0:00:30
+TCP-other PAT from inside:192.168.1.12/1029 to outside:6.6.6.2/1029 flags i idle 00:05:46,  timeout 0:00:30
+TCP-other PAT from inside:192.168.1.12/1030 to outside:6.6.6.2/1030 flags i idle 00:05:07,  timeout 0:00:30
+TCP-other PAT from inside:192.168.1.12/1031 to outside:6.6.6.2/1031 flags i idle 00:02:27,  timeout 0:00:30
+TCP-other PAT from inside:192.168.1.12/1032 to outside:6.6.6.2/1032 flags i idle 00:00:30,  timeout 0:00:30
+NAT from inside:192.168.1.2/32 to outside:6.6.6.3/32 flags s idle 00:11:27,  timeout 0:00:00
+
+ciscoasa#telnet 5.5.5.3 80
+          ^
+% Invalid input detected at '^' marker.
+	
+ciscoasa#config t
+ciscoasa(config)#telnet 5.5.5.3 80
+                                ^
+% Invalid input detected at '^' marker.
+	
+ciscoasa(config)#telnet 5.5.5.3 
+% Incomplete command.
+ciscoasa(config)#telnet 5.5.5.3 port 80
+                                ^
+% Invalid input detected at '^' marker.
+	
+ciscoasa(config)#access-list OUTSIDE-IN extended permit tcp any host
+% Incomplete command.
+ciscoasa(config)#access-list OUTSIDE-IN extended permit tcp any host 6.6.6.3 eq 80
+WARNING: <OUTSIDE-IN> found duplicate element
+ciscoasa(config)#access-list OUTSIDE-IN extended permit icmp any any
+WARNING: <OUTSIDE-IN> found duplicate element
+ciscoasa(config)#exit
+ciscoasa#config t
+ciscoasa(config)#access-list OUTSIDE-IN extended permit tcp any host 6.6.6.2
+ciscoasa(config)#access-list OUTSIDE-IN extended permit udp any host 6.6.6.2
+ciscoasa(config)#end
+ciscoasa#write memory
+Building configuration...
+Cryptochecksum: 5d0d7af0 2e99349f 610337cf 20366c32
+
+1943  bytes copied in 2.419 secs (803 bytes/sec)
+[OK]
+ciscoasa#
+ciscoasa#
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ISP Router
+System Bootstrap, Version 12.1(3r)T2, RELEASE SOFTWARE (fc1)
+Copyright (c) 2000 by cisco Systems, Inc.
+cisco 2811 (MPC860) processor (revision 0x200) with 60416K/5120K bytes of memory
+
+Readonly ROMMON initialized
+
+program load complete, entry point: 0x8000f000, size: 0xc940
+program load complete, entry point: 0x8000f000, size: 0xc940
+
+program load complete, entry point: 0x8000f000, size: 0x3ed1338
+Self decompressing the image :
+######################### [OK]
+              Restricted Rights Legend
+
+Use, duplication, or disclosure by the Government is
+subject to restrictions as set forth in subparagraph
+(c) of the Commercial Computer Software - Restricted
+Rights clause at FAR sec. 52.227-19 and subparagraph
+(c) (1) (ii) of the Rights in Technical Data and Computer
+Software clause at DFARS sec. 252.227-7013.
+
+           cisco Systems, Inc.
+           170 West Tasman Drive
+           San Jose, California 95134-1706
+
+
+
+Cisco IOS Software, 2800 Software (C2800NM-ADVIPSERVICESK9-M), Version 12.4(15)T1, RELEASE SOFTWARE (fc2)
+Technical Support: http://www.cisco.com/techsupport
+Copyright (c) 1986-2007 by Cisco Systems, Inc.
+Compiled Wed 18-Jul-07 06:21 by pt_rel_team
+Image text-base: 0x400A925C, data-base: 0x4372CE20
+
+This product contains cryptographic features and is subject to United
+States and local country laws governing import, export, transfer and
+use. Delivery of Cisco cryptographic products does not imply
+third-party authority to import, export, distribute or use encryption.
+Importers, exporters, distributors and users are responsible for
+compliance with U.S. and local country laws. By using this product you
+agree to comply with applicable laws and regulations. If you are unable
+to comply with U.S. and local laws, return this product immediately.
+
+A summary of U.S. laws governing Cisco cryptographic products may be found at:
+http://www.cisco.com/wwl/export/crypto/tool/stqrg.html
+
+If you require further assistance please contact us by sending email to
+export@cisco.com.
+cisco 2811 (MPC860) processor (revision 0x200) with 60416K/5120K bytes of memory
+Processor board ID JAD05190MTZ (4292891495)
+M860 processor: part number 0, mask 49
+2 FastEthernet/IEEE 802.3 interface(s)
+239K bytes of non-volatile configuration memory.
+62720K bytes of  ATA CompactFlash (Read/Write)
+Cisco IOS Software, 2800 Software (C2800NM-ADVIPSERVICESK9-M), Version 12.4(15)T1, RELEASE SOFTWARE (fc2)
+Technical Support: http://www.cisco.com/techsupport
+Copyright (c) 1986-2007 by Cisco Systems, Inc.
+Compiled Wed 18-Jul-07 06:21 by pt_rel_team
+
+Press RETURN to get started!
+
+
+
+Router>en
+Router#show ip interface brief
+Interface              IP-Address      OK? Method Status                Protocol
+ 
+FastEthernet0/0        unassigned      YES unset  administratively down down
+ 
+FastEthernet0/1        unassigned      YES unset  administratively down down
+ 
+Vlan1                  unassigned      YES unset  administratively down down
+Router#configure terminal
+Enter configuration commands, one per line.  End with CNTL/Z.
+Router(config)#interface FastEthernet0/0
+Router(config-if)#ip address 6.6.6.1 255.255.255.0
+Router(config-if)#no shutdown
+
+Router(config-if)#
+%LINK-5-CHANGED: Interface FastEthernet0/0, changed state to up
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/0, changed state to up
+exit
+Router(config)#interface FastEthernet0/1
+Router(config-if)#ip address 5.5.5.1 255.255.255.0
+Router(config-if)#no shutdown
+
+Router(config-if)#
+%LINK-5-CHANGED: Interface FastEthernet0/1, changed state to up
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/1, changed state to up
+exit
+Router(config)#end
+Router#
+%SYS-5-CONFIG_I: Configured from console by console
+write memory
+Building configuration...
+[OK]
+Router#
