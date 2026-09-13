@@ -29,7 +29,7 @@ Design and manage the security policies of an enterprise network by configuring 
 
 ## Network Topology
 
-![Network Diagram](docs/network-diagram.png)
+![Network Diagram](network-diagram.png)
 
 > Replace the image above with your actual Packet Tracer topology screenshot, saved as `docs/network-diagram.png`.
 
